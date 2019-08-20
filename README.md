@@ -1,4 +1,4 @@
-# micro:bit Scrolling GAME
+# micro:bit Scrolling Game
 
 This is a game where you fly a spaceship and avoid asteroids.
 
