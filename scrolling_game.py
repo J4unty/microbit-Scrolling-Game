@@ -1,6 +1,9 @@
 from microbit import *
 import random
 
+# notes functions needed:
+# better difficulty function
+
 playerPosition = 2
 playerScore = 0
 playerLevel = 0
@@ -66,6 +69,7 @@ def waitForStart():
     display.show(Image.ARROW_W)
     while True:
         if button_a.is_pressed():
+            display.clear()
             sleep(150)
             return
         sleep(100)
