@@ -2,7 +2,7 @@
 
 This is a game where you fly a spaceship and avoid asteroids.
 
-![Scrolling Game Demo Picture](https://github.com/J4unty/microbit-Scrolling-Game/images/demo_picture.png)
+![Scrolling Game Demo Picture](https://github.com/J4unty/microbit-Scrolling-Game/raw/master/images/demo_picture.png)
 
 ## Missing Features
 
