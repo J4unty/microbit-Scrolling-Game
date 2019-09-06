@@ -6,8 +6,8 @@ This is a game where you fly a spaceship and avoid asteroids.
 
 ## Setup
 
-Install Python >3.6 with pip and then install the dependencies with:
-```Bash
+Install Python 3.6+ with pip and then install the dependencies with:
+```bash
 pip install -r requirements.txt
 ```
 
