@@ -170,21 +170,25 @@ def increaseLevel():
     if playerLevel < maxLevel:
         playerLevel += 1
 
-while True:
-    gameOverVar = False
-    playerPosition = 2
-    playerScore = 0
-    playerLevel = 0
-    board = generateBoard()
-    waitForStart()
-    while not gameOverVar:
-        # TODO: fix loop bug when crash on i = 0, is it fixed?
-        for i in range(10 - playerLevel):
-            movement(board)
-            printBoard(drawPlayer(copyBoard(board)))
-            if gameOver is True:
-                break
-            sleep(100)
-        checkLevel()
-        moveDown(board)
-        playerScore += 1
+def main():
+    while True:
+        gameOverVar = False
+        playerPosition = 2
+        playerScore = 0
+        playerLevel = 0
+        board = generateBoard()
+        waitForStart()
+        while not gameOverVar:
+            # TODO: fix loop bug when crash on i = 0, is it fixed?
+            for i in range(10 - playerLevel):
+                movement(board)
+                printBoard(drawPlayer(copyBoard(board)))
+                if gameOver is True:
+                    break
+                sleep(100)
+            checkLevel()
+            moveDown(board)
+            playerScore += 1
+
+if __name__ == "__main__":
+    main()
