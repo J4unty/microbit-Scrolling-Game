@@ -1,4 +1,5 @@
-from microbit import *
+# needed for minimizer
+from microbit import display, Image, button_a, button_b, sleep
 import random
 
 # notes functions needed:
@@ -171,6 +172,7 @@ def increaseLevel():
         playerLevel += 1
 
 def main():
+    global gameOverVar, playerPosition, playerScore, playerLevel
     while True:
         gameOverVar = False
         playerPosition = 2
