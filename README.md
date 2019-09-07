@@ -13,7 +13,11 @@ pip install -r requirements.txt
 
 ## Compiling
 
-To compile the code you can use the [micro:bit online compiler](https://python.microbit.org/). Then Download the .hex file and copy it onto your micro:bit.
+To compile the source into a hex file use the compile.sh script.
+```bash
+./compile.sh
+```
+The output file is located at out/micropython.hex. Then copy this file onto your micro:bit.
 
 ## Missing Features
 
