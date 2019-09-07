@@ -19,6 +19,11 @@ To compile the source into a hex file use the compile.sh script.
 ```
 The output file is located at out/micropython.hex. Then copy this file onto your micro:bit.
 
+If you have a micro:bit pluged into your computer, you can directly upload the code with the following command:
+```bash
+./compile.sh upload
+```
+
 ## Missing Features
 
 * New asteroid creation routine based on level.

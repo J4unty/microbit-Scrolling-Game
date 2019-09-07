@@ -18,4 +18,9 @@ pyminifier \
 sed -i '' -e '$ d' ./out/minified.py
 
 # generate the micropython.hex file
-uflash ./out/minified.py ./out/
+if [ "$1" = "upload" ] || [ "$2" = "upload" ]
+then
+    uflash ./out/minified.py
+else
+    uflash ./out/minified.py ./out/
+fi
