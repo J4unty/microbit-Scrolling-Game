@@ -28,6 +28,7 @@ If you have a micro:bit pluged into your computer, you can directly upload the c
 
 * New asteroid creation routine based on level.
 * Endless Loop while crashing into astroids on a high level.
+* Sometimes the minifaction is broken, because it uses a variable twice inside the same function. Also don't use one char long variables, becuase it sometimes chooses them as replecement variable names. Maybe add a test funcation which checks the minified before a Compilation.
 
 ## License
 
