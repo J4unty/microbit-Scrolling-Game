@@ -24,6 +24,11 @@ If you have a micro:bit pluged into your computer, you can directly upload the c
 ./compile.sh upload
 ```
 
+There is also a `watch` option. If you want to automaticly compile and even deploy when saving the python file.
+```bash
+./compile.sh watch upload
+```
+
 ## Missing Features
 
 * New asteroid creation routine based on level.
