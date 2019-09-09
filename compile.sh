@@ -2,7 +2,7 @@
 
 # File locations
 outputFolder="./out/"
-pythonSourceFile="scrolling_game.py"
+pythonSourceFile="./src/scrolling_game.py"
 strippedSourceFile="${outputFolder}stripped.py"
 minifiedSourceFile="${outputFolder}minified.py"
 timestamp="date +\"[%d-%m-%Y %H:%M:%S]\""

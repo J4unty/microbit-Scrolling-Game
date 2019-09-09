@@ -62,6 +62,7 @@ def translateBoard(board) -> str:
     Returns:
         str: The LED brightness string to the given board
     """
+    # TODO: replace this with an awesome reduce oneliner
     ret = ""
     for yCoordinate in range(len(board)):
         for xCoordinate in range(len(board[yCoordinate])):
