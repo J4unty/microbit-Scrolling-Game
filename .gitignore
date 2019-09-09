@@ -106,3 +106,4 @@ venv.bak/
 # custom
 .DS_Store
 /out
+/src/microbit.py
