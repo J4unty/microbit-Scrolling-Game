@@ -33,7 +33,8 @@ There is also a `watch` option. If you want to automaticly compile and even depl
 
 * New asteroid creation routine based on level.
 * Endless Loop while crashing into astroids on a high level.
-* Sometimes the minifaction is broken, because it uses a variable twice inside the same function. Also don't use one char long variables, becuase it sometimes chooses them as replecement variable names. Maybe add a test funcation which checks the minified before a Compilation.
+* (Sometimes the minifaction is broken, because it uses a variable twice inside the same function. Also don't use one char long variables, becuase it sometimes chooses them as replecement variable names. Maybe add a test funcation which checks the minified before a Compilation.) => cannot repreduce this currently.
+* Add unittest for the project.
 
 ## License
 
