@@ -1,4 +1,5 @@
-from microbit import *
+# needed for minimizer
+from microbit import display, Image, button_a, button_b, sleep
 import random
 
 # notes functions needed:
@@ -18,8 +19,8 @@ def generateBoard():
         (list(list(str))): A new blank board
     """
     ret = []
-    for i in range(5):
-        ret.append(["","","","",""])
+    for index in range(5):
+        ret.append(["", "", "", "", ""])
     return ret
 
 def copyBoard(board):
@@ -32,8 +33,8 @@ def copyBoard(board):
         A copy of the given 2D list
     """
     ret = []
-    for i in range(len(board)):
-        ret.append(board[i].copy())
+    for index in range(len(board)):
+        ret.append(board[index].copy())
     return ret
 
 def translateValue(value: str) -> int:
@@ -52,20 +53,20 @@ def translateValue(value: str) -> int:
     else:
         return 0
 
-def translateBoard(board):
+def translateBoard(board) -> str:
     """Translates a given board to a 2D LED brightness list
 
     Args:
         board (list(list(str))): The given board
     
     Returns:
-        list(list(int)): The LED brightness 2D list to the given board
+        str: The LED brightness string to the given board
     """
     ret = ""
-    for i in range(len(board)):
-        for j in range(len(board[i])):
-            ret += str(translateValue(board[i][j]))
-        if i != len(board) - 1:
+    for yCoordinate in range(len(board)):
+        for xCoordinate in range(len(board[yCoordinate])):
+            ret += str(translateValue(board[yCoordinate][xCoordinate]))
+        if yCoordinate != len(board) - 1:
             ret += ":"
     return ret
 
@@ -171,6 +172,7 @@ def increaseLevel():
         playerLevel += 1
 
 def main():
+    global gameOverVar, playerPosition, playerScore, playerLevel
     while True:
         gameOverVar = False
         playerPosition = 2
@@ -179,8 +181,8 @@ def main():
         board = generateBoard()
         waitForStart()
         while not gameOverVar:
-            # TODO: fix loop bug when crash on i = 0, is it fixed?
-            for i in range(10 - playerLevel):
+            # TODO: fix loop bug when crash on index = 0, is it fixed?
+            for index in range(10 - playerLevel):
                 movement(board)
                 printBoard(drawPlayer(copyBoard(board)))
                 if gameOver is True:

@@ -1,0 +1,3 @@
+pyminifier==2.1
+uflash==1.3.0
+strip-hints==0.1.7
