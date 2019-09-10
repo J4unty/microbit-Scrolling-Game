@@ -29,11 +29,24 @@ There is also a `watch` option. If you want to automaticly compile and even depl
 ./compile.sh watch upload
 ```
 
+## Testing
+
+There are a few additional requirements for the unittests which have to be met, so install the requirements. And download the stub file with the following commands:
+```bash
+pip install -r test/requirements_additional_for_testing.txt
+./test/setup.sh
+```
+
+Then to run the tests just type use the following command in the project directory:
+```bash
+pytest
+```
+
 ## Missing Features
 
 * New asteroid creation routine based on level.
 * Endless Loop while crashing into astroids on a high level.
-* (Sometimes the minifaction is broken, because it uses a variable twice inside the same function. Also don't use one char long variables, becuase it sometimes chooses them as replecement variable names. Maybe add a test funcation which checks the minified before a Compilation.) => cannot repreduce this currently.
+* (Sometimes the minifaction is broken, because it uses a variable twice inside the same function. Also don't use one char long variables, becuase it sometimes chooses them as replecement variable names. Maybe add a test funcation which checks the minified before a Compilation.) => cannot repreduce this currently. Only happens with variable with the same length as the obfuscation.
 * Add unittest for the project.
 
 ## License
