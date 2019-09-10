@@ -27,7 +27,7 @@ def generateBoard() -> List[List[str]]:
         ret.append(["", "", "", "", ""])
     return ret
 
-def copyBoard(board: List[List[str]]):
+def copyBoard(board: List[List[str]]) -> List[List[str]]:
     """Makes a deep copy of a 2D list
 
     Args:
@@ -75,7 +75,7 @@ def translateBoard(board: List[List[str]]) -> str:
             ret += ":"
     return ret
 
-def printBoard(board: List[List[str]]):
+def printBoard(board: List[List[str]]) -> None:
     """Prints the given LED brightness 2D list
 
     Args:
@@ -96,7 +96,7 @@ def drawPlayer(board: List[List[str]]) -> List[List[str]]:
     board[4][playerPosition] = "P"
     return board
 
-def movePlayer(board: List[List[str]], step: int):
+def movePlayer(board: List[List[str]], step: int) -> None:
     """Moves the player left or right.
 
     Args:
@@ -107,27 +107,27 @@ def movePlayer(board: List[List[str]], step: int):
     playerPosition = (playerPosition + 5 + step) % 5
     checkPlayerPosition(board)
 
-def movement(board):
+def movement(board:  List[List[str]]) -> None:
     """Checks if the player pressed a button and moves him accordingly
 
     Args:
-        board (list(list(str))): The current board
+        board (List[List[str]]): The current board
     """
     if button_a.is_pressed():
         movePlayer(board, -1)
     if button_b.is_pressed():
         movePlayer(board, 1)
 
-def checkPlayerPosition(board):
+def checkPlayerPosition(board: List[List[str]]) -> None:
     """Checks if the plyaer is on a block, if yes it displays a Game Over screen
 
     Args:
-        board (list(list(str))): the given board
+        board (List[List[str]]): the given board
     """
     if board[4][playerPosition] != "":
         gameOver()
 
-def waitForStart():
+def waitForStart() -> None:
     """Waits until the player wants to start a game"""
     display.scroll("Start?")
     display.show(Image.ARROW_W)
@@ -138,7 +138,7 @@ def waitForStart():
             return
         sleep(100)
 
-def gameOver():
+def gameOver() -> None:
     """Displays the Game Over screen, current points and current high score"""
     global gameOverVar, maxScore
     gameOverVar = True
@@ -168,18 +168,19 @@ def moveDown(board: List[List[str]]):
     del board[len(board) - 1]
     checkPlayerPosition(board)
 
-def checkLevel():
+def checkLevel() -> None:
     """Increseas the playerLevel if needed"""
     if playerScore % 10 == 0:
         increaseLevel()
 
-def increaseLevel():
+def increaseLevel() -> None:
     """Increases the players level"""
     global playerLevel
     if playerLevel < maxLevel:
         playerLevel += 1
 
-def main():
+def main() -> None:
+    """Main Game Loop"""
     global gameOverVar, playerPosition, playerScore, playerLevel
     while True:
         gameOverVar = False
@@ -189,7 +190,7 @@ def main():
         board = generateBoard()
         waitForStart()
         while not gameOverVar:
-            # TODO: fix loop bug when crash on index = 0, is it fixed?
+            # TODO: fix loop bug when crash on index = 0
             for index in range(10 - playerLevel):
                 movement(board)
                 printBoard(drawPlayer(copyBoard(board)))
