@@ -6,6 +6,7 @@ pythonSourceFile="./src/scrolling_game.py"
 strippedSourceFile="${outputFolder}stripped.py"
 minifiedSourceFile="${outputFolder}minified.py"
 timestamp="date +\"[%d-%m-%Y %H:%M:%S]\""
+ignoreLineRegex="/# Remove this line before manual micro:bit upload$/d"
 
 # variables
 watchInterval=2
@@ -45,6 +46,9 @@ fi
 
 # strip typing hints, for easier minification
 strip-hints $pythonSourceFile > $strippedSourceFile
+
+# Remove Lines that are not for execution on the micro:bit. Because the typing module does not exist for micropython.
+sed -i "" "$ignoreLineRegex" $strippedSourceFile
 
 # minify the python source
 # need to compare the efficency of the --obfuscate-import-methods and --obfuscate-builtins options

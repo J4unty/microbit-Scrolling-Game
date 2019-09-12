@@ -1,5 +1,9 @@
 # needed for minimizer
 from microbit import display, Image, button_a, button_b, sleep
+
+# needed for the uinittests
+from typing import List # Remove this line before manual micro:bit upload
+
 import random
 
 # notes functions needed:
@@ -12,18 +16,18 @@ maxLevel = 6
 maxScore = 0
 gameOverVar = False
 
-def generateBoard():
+def generateBoard() -> List[List[str]]:
     """Generate a new blank board
     
     Returns:
-        (list(list(str))): A new blank board
+        (List[List[str]]): A new blank board
     """
     ret = []
     for index in range(5):
         ret.append(["", "", "", "", ""])
     return ret
 
-def copyBoard(board):
+def copyBoard(board: List[List[str]]) -> List[List[str]]:
     """Makes a deep copy of a 2D list
 
     Args:
@@ -53,11 +57,11 @@ def translateValue(value: str) -> int:
     else:
         return 0
 
-def translateBoard(board) -> str:
+def translateBoard(board: List[List[str]]) -> str:
     """Translates a given board to a 2D LED brightness list
 
     Args:
-        board (list(list(str))): The given board
+        board (List[List[str]]): The given board
     
     Returns:
         str: The LED brightness string to the given board
@@ -71,56 +75,59 @@ def translateBoard(board) -> str:
             ret += ":"
     return ret
 
-def printBoard(board: list(list(int))):
+def printBoard(board: List[List[str]]) -> None:
     """Prints the given LED brightness 2D list
 
     Args:
-        board (list(list(str))): The given LED brightness 2D list
+        board (List[List[str]]): The given LED brightness 2D list
     """
     if not gameOverVar:
         display.show(Image(translateBoard(board)))
 
-def drawPlayer(board):
+def drawPlayer(board: List[List[str]]) -> List[List[str]]:
     """Draws the player onto the given 2D string list
 
     Args:
-        board (list(list(str))): The given board
+        board (List[List[str]]): The given board
+
+    Returns:
+        List[List[str]]: the modfied board given as parameter
     """
     board[4][playerPosition] = "P"
     return board
 
-def movePlayer(board, step: int):
+def movePlayer(board: List[List[str]], step: int) -> None:
     """Moves the player left or right.
 
     Args:
-        baord (list(list(str)): the given 2D board
+        baord (List[List[str]]): the given 2D board
         step (int): The given step, left negative, right positive
     """
     global playerPosition
     playerPosition = (playerPosition + 5 + step) % 5
     checkPlayerPosition(board)
 
-def movement(board):
+def movement(board:  List[List[str]]) -> None:
     """Checks if the player pressed a button and moves him accordingly
 
     Args:
-        board (list(list(str))): The current board
+        board (List[List[str]]): The current board
     """
     if button_a.is_pressed():
         movePlayer(board, -1)
     if button_b.is_pressed():
         movePlayer(board, 1)
 
-def checkPlayerPosition(board):
+def checkPlayerPosition(board: List[List[str]]) -> None:
     """Checks if the plyaer is on a block, if yes it displays a Game Over screen
 
     Args:
-        board (list(list(str))): the given board
+        board (List[List[str]]): the given board
     """
     if board[4][playerPosition] != "":
         gameOver()
 
-def waitForStart():
+def waitForStart() -> None:
     """Waits until the player wants to start a game"""
     display.scroll("Start?")
     display.show(Image.ARROW_W)
@@ -131,7 +138,7 @@ def waitForStart():
             return
         sleep(100)
 
-def gameOver():
+def gameOver() -> None:
     """Displays the Game Over screen, current points and current high score"""
     global gameOverVar, maxScore
     gameOverVar = True
@@ -140,39 +147,40 @@ def gameOver():
     display.show("GAME OVER")
     display.scroll("Your score: " + str(playerScore) + ", Record: " + str(maxScore), delay=90)
 
-def generateLine() -> list(str):
+def generateLine() -> List[str]:
     """Generates a new Line with a random block
 
     Returns:
-        list(str): A new line for the game, with a random new block
+        List(str): A new line for the game, with a random new block
     """
     tmp = ["","","","",""]
     randNum = random.randint(0, 4)
     tmp[randNum] = "B"
     return tmp
 
-def moveDown(board):
+def moveDown(board: List[List[str]]):
     """Moves the given board a line down, and generates a new line on top
 
     Args:
-        board (list(list(str))): The given board
+        board (List[List[str]]): The given board
     """
     board.insert(0, generateLine())
-    del board[5]
+    del board[len(board) - 1]
     checkPlayerPosition(board)
 
-def checkLevel():
+def checkLevel() -> None:
     """Increseas the playerLevel if needed"""
     if playerScore % 10 == 0:
         increaseLevel()
 
-def increaseLevel():
+def increaseLevel() -> None:
     """Increases the players level"""
     global playerLevel
     if playerLevel < maxLevel:
         playerLevel += 1
 
-def main():
+def main() -> None:
+    """Main Game Loop"""
     global gameOverVar, playerPosition, playerScore, playerLevel
     while True:
         gameOverVar = False
@@ -182,7 +190,7 @@ def main():
         board = generateBoard()
         waitForStart()
         while not gameOverVar:
-            # TODO: fix loop bug when crash on index = 0, is it fixed?
+            # TODO: fix loop bug when crash on index = 0
             for index in range(10 - playerLevel):
                 movement(board)
                 printBoard(drawPlayer(copyBoard(board)))
