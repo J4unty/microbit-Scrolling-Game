@@ -34,7 +34,7 @@ def copyBoard(board: List[List[str]]) -> List[List[str]]:
         board (list(list(str))): The given 2D list
     
     Returns:
-        A copy of the given 2D list
+        List[List[str]]: A copy of the given 2D list
     """
     ret = []
     for index in range(len(board)):
