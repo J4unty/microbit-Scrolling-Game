@@ -47,7 +47,8 @@ pytest
 * New asteroid creation routine based on level.
 * Endless Loop while crashing into astroids on a high level.
 * (Sometimes the minifaction is broken, because it uses a variable twice inside the same function. Also don't use one char long variables, becuase it sometimes chooses them as replecement variable names. Maybe add a test funcation which checks the minified before a Compilation.) => cannot repreduce this currently. Only happens with variable with the same length as the obfuscation.
-* Add unittest for the project.
+* Fix the syntax highlighting in the unittests.
+* Add a launch.json to upload the code with a button press.
 
 ## License
 
