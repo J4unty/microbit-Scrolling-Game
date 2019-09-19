@@ -1,0 +1,17 @@
+{
+    "python.unitTest.pyTestArgs": [
+        "test"
+    ],
+    "python.unitTest.unittestEnabled": false,
+    "python.unitTest.nosetestsEnabled": false,
+    "python.unitTest.pyTestEnabled": true,
+    "editor.tabSize": 4,
+    "editor.insertSpaces": true,
+    "python.linting.pylintEnabled": true,
+    "python.linting.lintOnSave": true,
+    // doesn't work with vscodes pylint ':)
+    // TODO: make *.pyi files work with vscode
+    "python.autoComplete.typeshedPaths": [
+        "${workspaceFolder}/src"
+    ]
+}
