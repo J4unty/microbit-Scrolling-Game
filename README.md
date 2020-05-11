@@ -1,5 +1,7 @@
 # micro:bit Scrolling Game
 
+[![github-license-image](https://img.shields.io/github/license/J4unty/microbit-Scrolling-Game)](LICENSE) [![github-last-commit-image](https://img.shields.io/github/last-commit/J4unty/microbit-Scrolling-Game)](https://github.com/J4unty/microbit-Scrolling-Game/commits/) [![github-followers](https://img.shields.io/github/followers/j4unty?label=Follow%20%40J4unty)](https://github.com/J4unty)
+
 This is a game where you fly a spaceship and avoid asteroids.
 
 ![Scrolling Game Demo Picture](https://github.com/J4unty/microbit-Scrolling-Game/raw/master/images/demo_picture.png)
