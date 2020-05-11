@@ -18,7 +18,7 @@ gameOverVar = False
 
 def generateBoard() -> List[List[str]]:
     """Generate a new blank board
-    
+
     Returns:
         (List[List[str]]): A new blank board
     """
@@ -32,7 +32,7 @@ def copyBoard(board: List[List[str]]) -> List[List[str]]:
 
     Args:
         board (list(list(str))): The given 2D list
-    
+
     Returns:
         List[List[str]]: A copy of the given 2D list
     """
@@ -46,7 +46,7 @@ def translateValue(value: str) -> int:
 
     Args:
         value (str): The given String block
-    
+
     Returns:
         int: The LED brightness value for that block [0,9]
     """
@@ -62,7 +62,7 @@ def translateBoard(board: List[List[str]]) -> str:
 
     Args:
         board (List[List[str]]): The given board
-    
+
     Returns:
         str: The LED brightness string to the given board
     """
@@ -158,7 +158,7 @@ def generateLine() -> List[str]:
     tmp[randNum] = "B"
     return tmp
 
-def moveDown(board: List[List[str]]):
+def moveDown(board: List[List[str]]) -> None:
     """Moves the given board a line down, and generates a new line on top
 
     Args:
